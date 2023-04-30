@@ -4,7 +4,7 @@
 
 ### System Requirements:
 - Node
-- Linux OS
+- Linux OS (No Windows/OSX Support as of right now)
 
 ### Supported Interpreters/Compilers:
 - node
