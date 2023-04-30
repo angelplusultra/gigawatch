@@ -7,6 +7,13 @@ import { nodemonInit } from "../services/nodemon.js";
 import { run } from "../services/run.js";
 
 export const controllers = {
+  javascript({ file, cleanMode }) {
+    nodemonInit({
+      file,
+      cleanMode,
+      compiler: "node",
+    });
+  },
   async python({ file, cleanMode }) {
     if (commandExistsSync("python3")) {
       console.log("Command exists");
