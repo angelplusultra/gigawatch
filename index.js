@@ -5,12 +5,17 @@
 // const compiler = args[0];
 // console.log(`Hello, ${name}!`);
 //
-const { exec, spawn } = require("child_process");
+import { exec, spawn } from "child_process";
 
-const inquirer = require("inquirer");
-const art = require("ascii-art");
-const colors = require("colors");
+import inquirer from "inquirer";
+import art from "ascii-art";
+import colors from "colors";
+import { controllers } from "./controllers/controllers.js";
+import { compilers } from "./constants/constants.js";
+import { sync as commandExistsSync } from "command-exists";
+// returns true/false; doesn't throw
 
+console.log(commandExistsSync("ts-node"));
 async function main() {
   const welcome = await art.font("GigaWatch", "slant").completed();
 
@@ -38,37 +43,16 @@ async function main() {
     .then((answers) => {
       console.log(answers);
       if (!answers.file) {
-        console.log("No file");
+        return console.log("You need to specify the file path");
+      }
+      if (answers.compiler == "TypeScript") {
+        return controllers.typescript(answers);
       }
 
-      const compilers = {
-        TypeScript: "ts-node",
-        Python: "python3",
-        Lua: "lua",
-      };
-let statement
-      if (answers.compiler === "JavaScript") {
-        console.log(answers);
-        statement = answers.cleanMode ? ["--exec", "clear; node", answers.file] : [answers.file]
-      } else {
-      statement = answers.cleanMode
-          ? ["--exec", "clear; ", compilers[answers.compiler], answers.file]
-          : ["--exec", compilers[answers.compiler], answers.file];
+      if (answers.compiler == "Lua") {
+        
+        return controllers.lua(answers);
       }
-        const nodemon = spawn("nodemon", statement);
-
-        nodemon.stdout.on("data", (data) => {
-          console.log(data.toString());
-        });
-
-        nodemon.stderr.on("data", (data) => {
-          console.error(`stderr: ${data}`);
-        });
-
-        nodemon.on("close", (code) => {
-          console.log(`nodemon process exited with code ${code}`);
-        });
-      
     });
 }
 
