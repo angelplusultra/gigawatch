@@ -8,19 +8,20 @@
 import { exec, spawn } from "child_process";
 
 import inquirer from "inquirer";
-import art from "ascii-art";
 import colors from "colors";
 import { controllers } from "./controllers/controllers.js";
-import { compilers } from "./constants/constants.js";
-import { sync as commandExistsSync } from "command-exists";
 import { validateFileExistence } from "./middleware/validators.js";
+import fs from "fs";
+import figlet from "figlet";
+import path from "path";
+import * as url from 'url';
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 // returns true/false; doesn't throw
 
-console.log(commandExistsSync("ts-node"));
 async function main() {
-  const welcome = await art.font("GigaWatch", "slant").completed();
-
-  console.log(welcome.cyan);
+  let data = fs.readFileSync(path.join(__dirname, '/fonts/slant.flf'), "utf8");
+  figlet.parseFont("myfont", data);
+  console.log(figlet.textSync("GigaWatch", "myfont").cyan);
 
   inquirer
     .prompt([
@@ -47,8 +48,6 @@ async function main() {
         return console.log("You need to specify the file path");
       }
 
-
-
       if (answers.compiler == "TypeScript") {
         return controllers.typescript(answers);
       }
@@ -57,10 +56,9 @@ async function main() {
       }
 
       if (answers.compiler == "Lua") {
-        validateFileExistence(answers.file, '.lua')
+        validateFileExistence(answers.file, ".lua");
         return controllers.lua(answers);
       }
-
     });
 }
 
