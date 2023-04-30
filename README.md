@@ -1,6 +1,16 @@
 # GigaWatch CLI
 
 ## A multi-language watch-mode cli tool powered by Nodemon
+<div>
+<img width="100%" align="center"
+    style="
+           margin-left: auto;
+           margin-right: auto;
+           width: 70%;"
+    src="https://s11.gifyu.com/images/gw2.gif" 
+    alt="Our logo">
+</img>
+</div>
 
 ### System Requirements:
 - Node
