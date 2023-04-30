@@ -22,6 +22,9 @@ async function main() {
 
   /* ROUTING FOR ARGUMENTS PROIVDED*/
   if(argsProvided){
+    if(!compiler || !file){
+      return console.error("Error: When using flags you must at least provide arguments for -f (file) and a compiler option (-t, -j, -p, -l), See documentation for more: https://github.com/angelplusultra/GigaWatch")
+    }
     if(compiler == 'TypeScript'){
       validateFileExistence(file, '.ts')
       return controllers.typescript({file, cleanMode})
