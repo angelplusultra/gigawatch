@@ -19,13 +19,12 @@ If it doesn't detect the command, it will ask you for permission to install it f
 
 ### Installation
 
-```console
-$ npm install -g gigawatch
-# MAKE SURE TO INSTALL IT GLOBALLY
+It is recommended to install it globally
+```
+npm install -g gigawatch
 ```
 ### Usage
-
-```console
-$ gigawatch
-## This command will bring up the CLI
+GW has only one command which will open the CLI
+```
+gigawatch
 ```
