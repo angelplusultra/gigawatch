@@ -45,6 +45,8 @@ gw
 
 ### Command Line Arguments
 
+Alternatively, You can skip the CLI prompts by passing in command argument flags
+
 #### Compiler Option (REQUIRED)
 <table>
   <tr>
