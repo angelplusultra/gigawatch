@@ -26,6 +26,7 @@
   },
   "type": "module",
   "bin": {
+    "gw": "./index.js",
     "gigawatch": "./index.js"
   }
 }
