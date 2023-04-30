@@ -27,4 +27,8 @@ npm install -g gigawatch
 GW has only one command which will open the CLI
 ```
 gigawatch
+
+## or the alias
+
+gw
 ```
