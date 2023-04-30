@@ -32,3 +32,65 @@ gigawatch
 
 gw
 ```
+
+### Command Line Arguments
+
+#### Compiler Option (REQUIRED)
+<table>
+  <tr>
+    <td>Flag</td>
+    <td>Language</td>
+  </tr>
+  <tr>
+    <td> -j</td>
+    <td>JavaScript</td>
+    
+  </tr>
+  <tr>
+    <td> -t</td>
+    <td>TypeScript</td>
+  </tr>
+  <tr>
+    <td> -p </td>
+    <td>Python</td>
+  </tr>
+  <tr>
+    <td> -l </td>
+    <td>Lua</td>
+  </tr>
+ 
+</table>
+
+#### File Path (REQUIRED)
+<table>
+  <tr>
+    <td>Flag</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td> -f</td>
+    <td>Relative location of the file you want GW to watch</td>
+    
+  </tr>
+
+
+</table>
+
+ #### Clean Mode (OPTIONAL)
+ 
+<table>
+  <tr>
+    <td>Flag</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td> -c</td>
+    <td>Enables Clean Mode</td>
+    
+  </tr>
+  </table>
+  
+  ### Example of CL Arguments 
+  ```
+  gigawatch -t -f ./index.ts -c
+  ```
