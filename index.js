@@ -13,6 +13,7 @@ import colors from "colors";
 import { controllers } from "./controllers/controllers.js";
 import { compilers } from "./constants/constants.js";
 import { sync as commandExistsSync } from "command-exists";
+import { validateFileExistence } from "./middleware/validators.js";
 // returns true/false; doesn't throw
 
 console.log(commandExistsSync("ts-node"));
@@ -45,14 +46,21 @@ async function main() {
       if (!answers.file) {
         return console.log("You need to specify the file path");
       }
+
+
+
       if (answers.compiler == "TypeScript") {
         return controllers.typescript(answers);
       }
+      if (answers.compiler == "Python") {
+        return controllers.python(answers);
+      }
 
       if (answers.compiler == "Lua") {
-        
+        validateFileExistence(answers.file, '.lua')
         return controllers.lua(answers);
       }
+
     });
 }
 

@@ -1,4 +1,4 @@
-import { exec } from 'child_process'
+import { exec } from "child_process";
 export const run = async (cmd) => {
   const child = exec(cmd, (err) => {
     if (err) console.error(err);

@@ -7,8 +7,43 @@ import { nodemonInit } from "../services/nodemon.js";
 import { run } from "../services/run.js";
 
 export const controllers = {
+  async python({ file, cleanMode }) {
+    if (commandExistsSync("python3")) {
+      console.log("Command exists");
+      nodemonInit({
+        file,
+        cleanMode,
+        compiler: "python3",
+      });
+    } else {
+      inquirer
+        .prompt([
+          {
+            type: "confirm",
+            name: "downloadPython",
+            message:
+              "It looks like you dont have the Python3 interpreter on your system, would you like us to install it for you?",
+          },
+        ])
+        .then(async (answer) => {
+          if (answer.downloadPython == true) {
+            console.log("Command doesnt exist");
+            await run("sudo apt install python3");
+
+            console.log("Installed");
+            if (commandExistsSync("python3")) {
+              nodemonInit({
+                compiler: "python3",
+                file,
+                cleanMode,
+              });
+            }
+          }
+        });
+    }
+  },
   async lua({ file, cleanMode }) {
-    if (commandExistsSync("luaaa")) {
+    if (commandExistsSync("lua")) {
       console.log("Command exists");
       nodemonInit({
         file,
