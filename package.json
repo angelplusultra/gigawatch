@@ -1,0 +1,21 @@
+{
+  "name": "gigawatch",
+  "version": "1.0.0",
+  "description": "a all-in-one watch-mode engine using nodemon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-art": "^2.8.5",
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.5",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
+  },
+  "bin": {
+    "gigawatch": "./index.js"
+  }
+}
