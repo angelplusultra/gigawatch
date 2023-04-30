@@ -10,7 +10,6 @@ export function parseArgs() {
   } else{
     argsProvided = true
   }
-console.log(args)
   let flags = {
     '-c': 'Clean Mode',
     '-t': 'TypeScript',
@@ -41,13 +40,6 @@ console.log(args)
     }
   
     
-  });
-
-
-  console.log("Arguments: ", {
-    cleanMode,
-    filePath,
-    compiler
   });
 
   return {argsProvided, cleanMode, compiler, filePath }
