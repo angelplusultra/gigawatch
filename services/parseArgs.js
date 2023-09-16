@@ -3,7 +3,7 @@ export function parseArgs() {
   let compiler, filePath, cleanMode, argsProvided;
 
   cleanMode = false;
-  if (args.length === 0) {
+  if (args.length < 2) {
     argsProvided = false;
   } else {
     argsProvided = true;

@@ -12,12 +12,16 @@ import figlet from "figlet";
 import path from "path";
 import * as url from "url";
 import { parseArgs } from "./services/parseArgs.js";
+import { log } from "console";
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 // returns true/false; doesn't throw
 
 async function main() {
+
    const {argsProvided, compiler, cleanMode, filePath: file} = parseArgs()
 
+
+	const quickRunEnabled = process.argv.slice(2).length === 1
 
 
   /* ROUTING FOR ARGUMENTS PROIVDED*/
@@ -43,6 +47,28 @@ async function main() {
     }
 
   } 
+	if(quickRunEnabled){
+		const filePath = process.argv.slice(2)[0]
+		const extension = path.extname(filePath)
+
+		const cont = {
+			'.js': 'javascript',
+			'.ts': 'typescript',
+			'.py': 'python',
+			'.lua': 'lua'
+		}[extension]
+
+		validateFileExistence(filePath, extension)
+
+		return controllers[cont]({
+			file: filePath,
+			cleanMode: true
+		})
+	}
+
+
+
+
 
 
 
@@ -96,6 +122,7 @@ async function main() {
         return controllers.lua(answers);
       }
     });
+
 }
 
 main();
